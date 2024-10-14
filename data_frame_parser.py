@@ -9,12 +9,12 @@ from attr_transform import AttrTransform
 class DataFrameParser:
     def __init__(self, path_to_dataset: str,
                  attrs_to_rename: Mapping[str, str],
-                 attrs_transform: Mapping[AttrTransform, Callable[..., Any]],
+                 attrs_transform: List[AttrTransform],
                  attrs: List[str],
                  target: str) -> None:
 
         self.attrs_to_rename: Mapping[str, str] = attrs_to_rename
-        self.attrs_transform: Mapping[AttrTransform, Callable[..., Any]] = attrs_transform
+        self.attrs_transform: List[AttrTransform] = attrs_transform
         self.attrs: List[attrs] = attrs
         self.target: str = target
         self.path_to_dataset: str = path_to_dataset

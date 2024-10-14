@@ -100,7 +100,6 @@ def main():
 
   id_tree = IdTree(df)
   id_tree.build()
-  pass
 
 if __name__ == "__main__":
   main()
