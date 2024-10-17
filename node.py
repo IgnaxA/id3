@@ -1,16 +1,19 @@
 from typing import List, Self
+from uuid import uuid4
 
 class Node:
     def __init__(self) -> None:
-        self.name: str = None
+        self.uuid = str(uuid4())
+        self.name: int = None
         self.attr: str = None
         self.target_value: int = None
-        self.informativeness: float = None
+        self.question_informativeness: float = None
+        self.answer_informativeness: float = None
         self.columns: List[str] = None
         self.parent: Self = None
         self.children: List[Self] = []
 
-    def set_name(self, name: str) -> Self:
+    def set_name(self, name: int) -> Self:
         self.name = name
 
         return self
@@ -20,8 +23,13 @@ class Node:
 
         return self
 
-    def set_informativeness(self, informativeness: float) -> Self:
-        self.informativeness = informativeness
+    def set_question_informativeness(self, informativeness: float) -> Self:
+        self.question_informativeness = informativeness
+
+        return self
+
+    def set_answer_informativeness(self, informativeness: float) -> Self:
+        self.answer_informativeness = informativeness
 
         return self
 
@@ -51,3 +59,18 @@ class Node:
 
     def get_target_value(self) -> int:
         return self.target_value
+
+    def get_uuid(self) -> str:
+        return self.uuid
+
+    def get_name(self) -> str:
+        name = ''
+        if self.attr is not None:
+            name += f'{self.attr}\n'
+        if self.name is not None:
+            name += f'{self.name}\n'
+        if self.question_informativeness is not None:
+            name += f'{self.question_informativeness}\n'
+        if self.target_value is not None:
+            name += f'{self.target_value}'
+        return name
